@@ -92,11 +92,11 @@ body {
 
   .fa {
     padding: 25px;
-    font-size: 30px;
-    width: 60px;
+    font-size: 50px;
+    width: 100px;
     text-align: center;
     text-decoration: none;
-    margin: 10px 5px;
+    margin: 15px 10px;
     border-radius: 50%;
   }
   
