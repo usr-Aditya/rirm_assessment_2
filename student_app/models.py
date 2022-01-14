@@ -7,7 +7,7 @@ class StudentInfo(models.Model):
     name = models.CharField(max_length=100)
     klass = models.CharField(max_length=100)
     school = models.CharField(max_length=100)
-    mobile = models.IntegerField()
+    mobile = models.BigIntegerField()
     address = models.CharField(max_length=100)
 
     def __str__(self):
