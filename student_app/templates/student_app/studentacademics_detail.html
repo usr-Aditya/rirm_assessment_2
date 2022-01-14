@@ -1,0 +1,110 @@
+{% extends 'home_rirm/base.html' %}
+{% load static %}
+
+{% block nav %}
+    <li>
+        {% if user.is_authenticated %}
+        <a href="{% url 'student-home' %}" style="color: #777;">Student List</a>
+        {% endif %}
+    </li>
+    <li>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" style="color: #777;">Logout</a>
+        {% endif %}
+    </li>
+{% endblock nav %}
+
+{% block content %}
+    
+<div class="container-fluid">
+    <h1 class="text-center"> Welcome {{ user.username|title }} </h1>
+    <h3 class="text-center">Student information available is given in the table below.</h3>
+    <br>
+    <div class="container">
+    <div class="col-sm-5 bg-2"
+    style="border-radius: 15px;
+    padding: 30px;
+    height: 100%;
+    box-shadow: 0px 2px 10px 0px #555;
+    ">
+    <h1 class="text-center"> Personal </h1><br>
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr style="background-color: #fff; color: #000;">
+            <th style="text-align: center !important;">#</th>
+            <th style="text-align: center !important;">Details</th>
+        </tr>
+        </thead>
+        <tbody class="text-center personal">
+            <tr>
+                <td>Name</td>
+                <td>{{object.roll_no.name}}</td>
+            </tr>
+            <tr>
+                <td>Roll Number</td>
+                <td>{{object.roll_no.roll_no}}</td>
+            </tr>
+            <tr>
+                <td>Class</td>
+                <td>{{object.roll_no.klass}}</td>
+            </tr>
+            <tr>
+                <td>School</td>
+                <td>{{object.roll_no.school}}</td>
+            </tr>
+            <tr>
+                <td>Mobile</td>
+                <td>{{object.roll_no.mobile}}</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>{{object.roll_no.address}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<div class="col-sm-2"></div>
+<div class="col-sm-5 bg-1"
+style="border-radius: 15px;
+    padding: 30px;
+    height: 100%;
+    box-shadow: 0px 2px 10px 0px #555;
+    ">
+    <h1 class="text-center"> Academics </h1><br>
+    <table class="table table-hover table-bordered">
+        <thead>
+        <tr style="background-color: #fff; color: #1abc9c;">
+            <th style="text-align: center !important;">Subject</th>
+            <th style="text-align: center !important;">Marks</th>
+        </tr>
+        </thead>
+        <tbody class="text-center academic">
+            <tr>
+                <td>Maths</td>
+                <td>{{object.maths}}</td>
+            </tr>
+            <tr>
+                <td>Physics</td>
+                <td>{{object.physics}}</td>
+            </tr>
+            <tr>
+                <td>Chemistry</td>
+                <td>{{object.chemistry}}</td>
+            </tr>
+            <tr>
+                <td>Biology</td>
+                <td>{{object.biology}}</td>
+            </tr>
+            <tr>
+                <td>English</td>
+                <td>{{object.english}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <button class="btn btn-default text-center" style="float: right;"><a href="{% url 'student-details' %}" style="color: #1abc9c; text-decoration: none;">Go back</a></button>
+</div>
+</div>
+</div>
+{% endblock content %}

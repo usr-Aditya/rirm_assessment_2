@@ -1,0 +1,15 @@
+{% extends "home_rirm/base.html" %}
+{% block nav %}
+    <li>
+        <a href="{% url 'login' %}" style="color: #777;">Sign In</a>
+    </li>
+{% endblock nav %}
+
+{% block content %}
+        <div class="container bg-3" style="height: 75vh;">
+            <div class="col-sm-10 text-center" style="margin: 18% 30px 30px 8%;">
+                <h2>You have been logged out.</h2>
+                <p><a style="color: #1abc9c; font-weight: 900;" href="{% url 'login' %}" >Sign In</a> again or go to <a style="color: #1abc9c; font-weight: 900;" href="{% url 'app-home' %}" >Home Page</a>.</p>
+            </div>
+        </div>
+{% endblock content %}

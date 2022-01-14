@@ -1,0 +1,35 @@
+{% extends "home_rirm/base.html" %}
+{% load static %}
+{% block nav %}
+        <li>
+          <img src="{% static 'home_rirm/img/click.gif' %}" 
+          style="width: 50px; margin-right: -10%; transform: scaleX(-1); display: inline-block;">
+          {% if user.is_authenticated %}
+            <a href="{% url 'student-home' %}" style="color: #777; display: inline-block;">Assessment Challenge</a>
+          {% else %}
+             <a href="{% url 'register' %}" style="color: #777; display: inline-block;">Assessment Challenge</a>
+          {% endif %}
+        </li>
+{% endblock nav %}
+
+{% block content %}
+    <!-- Profile container -->
+    <div id="profile" class="container-fluid bg-3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="title_image slideanim">
+                        <img src="{% static 'home_rirm/img/profile.jpg' %}" alt="Avatar" class="image img-circle">
+                    </div>
+                </div>
+                <div class="col-sm-8 getintouch">
+                    <h2>Hi, I am Aditya Chidepatil</h2>
+                    <br>
+                    <h4>About me</h4>
+                    <p>A virtuous philomath with ambitions. The passion to learn and explore have helped me to strive and achieve the little that I have in my life till now. It is no surprise that I'm ambitious. One can say, "Ambitious as Vikings" (though my ambitions are completely different). I believe, I still have a lot to learn and explore and I'm always equally excited to learn and explore new horizons.</p>
+                    <button class="btn btn-default btn-lg"> Get in touch</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

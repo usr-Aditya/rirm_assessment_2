@@ -1,0 +1,80 @@
+{% extends 'home_rirm/base.html' %}
+{% load static %}
+
+{% block nav %}
+    <li>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" style="color: #777;">Logout</a>
+        {% endif %}
+    </li>
+{% endblock nav %}
+
+{% block content %}
+    
+<div class="container-fluid">
+    <div class="container">
+        <div class="col-sm-8 bg-1" 
+        style="border-radius: 15px;
+        padding: 30px;
+        margin:1% 15% 2% 15%;
+        height: 100%;
+        box-shadow: 0px 2px 10px 0px #555;">
+        
+
+        <h1 class="text-center"> Welcome {{ user.username|title }} </h1>
+        <h3 class="text-center">Student information available is given in the table below.</h3>
+        <br>
+        <form method="POST" action="{% url 'student-search' %}">
+            {% csrf_token %}
+            <span style="display: inline-block; width: 85%; float: left;">
+            <input class="form-control" id="myInput" type="text" placeholder="Search student by name" name="searched"></span>
+            <span style="display: inline-block; float: right;"><button class="btn btn-default" style="color: #1abc9c;">Search</button></span>
+                <br><br>
+        </form>
+        <br>
+
+    <table class="table table-hover">
+        <thead>
+        <tr style="background-color: #fff; color: #1abc9c;">
+            <th style="text-align: center !important;">Name | Update | Delete</th>
+            <th style="text-align: center !important;">Roll Number</th>
+            <th style="text-align: center !important;">Class</th>
+            <th style="text-align: center !important;">School</th>
+            <th style="text-align: center !important;">Mobile</th>
+            <th style="text-align: center !important;">Address</th>
+
+        </tr>
+        </thead>
+        <tbody class="text-center">
+            {% for student in studentsinfo %}
+                    <tr>
+                    <td>
+                    {{student.name}}
+                    <a href="{% url 'student-update' student.roll_no %}" 
+                    style="color: inherit; text-decoration: none;">
+                        <glyphicon class="glyphicon glyphicon-pencil" style="margin-left: 40px;"></glyphicon>
+                    </a>
+                    <a href="{% url 'student-delete' student.roll_no %}" 
+                    style="color: inherit; text-decoration: none;">
+                        <glyphicon class="glyphicon glyphicon-remove" style="margin-left: 40px;"></glyphicon>
+                    </a>
+                        </td>
+                        <td>{{student.roll_no}}</td>
+                        <td>{{student.klass}}</td>
+                        <td>{{student.school}}</td>
+                        <td>{{student.mobile}}</td>
+                        <td>{{student.address}}</td>
+                        
+                    </tr>
+                {% endfor %}
+            
+        </tbody>
+    </table>
+    <div class="container-fluid">
+        <button class="btn btn-default" style="float: left;"><a href="{% url 'student-create' %}" style="text-decoration: none; color: #1abc9c;">Add New Student</a></button>
+        <button class="btn btn-default" style="float: right;"><a href="{% url 'student-details' %}" style="text-decoration: none; color: #1abc9c;">Detail View</a></button>
+    </div>
+</div>
+</div>
+</div>
+{% endblock content %}

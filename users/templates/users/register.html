@@ -1,0 +1,53 @@
+{% extends "home_rirm/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container" style="height: 95vh; ">
+    <div class="row">
+    <div class="col-sm-5 bg-1" 
+    style="box-shadow: 0px 2px 10px 0px #555;
+    padding: 30px !important;
+    margin: 30px;
+    border-radius: 2%;
+    display: inline-block;
+    ">
+<form method="POST">
+    {% csrf_token %}
+    <field-set class="form-group">
+        <legend class="border-bottom">
+            SIGN UP FOR TESTING
+        </legend>
+        {{ form|crispy }}
+    </field-set>
+    <div class="form-group">
+        <button class="btn btn-default" type="submit" style="color: #1abc9c;">Sign UP</button>
+    </div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="border-top">
+        <br>
+        <small class="text-muted" style="font-size: 15px !important; color: #fff;"> Already have an account? <button class="btn btn-default"><a style="color: #1abc9c; font-weight: 900;" href="{% url 'login' %}" >Sign In</a></button></small>
+    </div>
+</form>
+</div>
+<div class="col-sm-5 bg-2"
+style="box-shadow: 0px 2px 10px 0px #555;
+    padding: 30px !important;
+    margin: 15% 30px 30px 30px;
+    border-radius: 2%;">
+<span>
+<h2> Hey there!</h2><br>
+<p>Complete user registration and login system has been built for the assessment.</p>
+<p>However, only login was requested for assessment.</p><br>
+</span>
+<span>
+<p>Registration can be completely skipped if you wish. <br> Directly go to <a style="color: #1abc9c; font-weight: 900;" href="{% url 'login' %}" >Sign In</a> and use existing credentials as described there.</p>
+</span>
+</div>
+</div>
+</div>
+{% endblock content %}

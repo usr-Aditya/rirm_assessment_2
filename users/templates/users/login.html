@@ -1,0 +1,54 @@
+{% extends "home_rirm/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+        <div class="container" style="height: 75vh; ">
+            <div class="row">
+            <div class="col-sm-5 bg-1" 
+            style="box-shadow: 0px 2px 10px 0px #555;
+            padding: 30px !important;
+            margin: 7% 30px 30px 30px;
+            border-radius: 2%;
+            ">
+        <form method="POST">
+            {% csrf_token %}
+            <field-set class="form-group">
+                <legend class="border-bottom">
+                    LOGIN FOR TESTING
+                </legend>
+                {{ form|crispy }}
+            </field-set>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit" style="color: #1abc9c;">Sign In</button>
+            </div>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class="border-top">
+                <br>
+                <small class="text-muted" style="font-size: 15px !important; color: #fff;"> Want an account? <button class="btn btn-default"><a style="color: #1abc9c; font-weight: 900;" href="{% url 'register' %}" >Sign Up</a></button></small>
+            </div>
+        </form>
+    </div>
+        <div class="col-sm-5 bg-2"
+        style="box-shadow: 0px 2px 10px 0px #555;
+            padding: 30px !important;
+            margin: 7% 30px 30px 30px;
+            border-radius: 2%;">
+        <span>
+        <h2> Hey there!</h2><br>
+        <p>Complete user registration and login system has been built for the assessment.</p>
+        <p>However, only login was requested for assessment, so registration can be skipped.</p><br>
+        </span>
+        <span>
+        <p>Please use following credentials for testing the system: </p>
+        <p>Username: <i>admin</i> <br>
+        Password: <i>testing001 </p>
+    </span>
+        </div>
+    </div>
+    </div>
+{% endblock content %}
