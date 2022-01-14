@@ -23,7 +23,7 @@ def home(request):
 def search(request):
     if request.method == 'POST':
         searched = request.POST['searched']
-        student_searched = StudentInfo.objects.filter(name__contains = searched)
+        student_searched = StudentInfo.objects.filter(name__contains = searched.title())
         parallel_searched = StudentAcademics.objects.filter(roll_no = student_searched.first().roll_no).all()
         for student in parallel_searched:
             print(student)
