@@ -91,12 +91,12 @@ body {
   }
 
   .fa {
-    padding: 20px;
+    padding: 25px;
     font-size: 30px;
-    width: 30px;
+    width: 40px;
     text-align: center;
     text-decoration: none;
-    margin: 5px 2px;
+    margin: 10px 5px;
     border-radius: 50%;
   }
   
@@ -207,5 +207,10 @@ body {
   
   .fa-rss {
     background: #ff6600;
+    color: white;
+  }
+
+  .fa-github {
+    background: #161b22;
     color: white;
   }
